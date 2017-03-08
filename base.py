@@ -42,7 +42,22 @@ class Death(Scene):
 class GuildHall(Scene):
 
     def enter(self):
-        pass
+        print("Welcome to the Guild Hall %s." % username)
+        print("I am your quest guide, Herold. What would you like to do?")
+        print("1. Go on quest.")
+        print("2. Visit the blacksmith.")
+        print("3. Visit the armorsmith.")
+
+        response = input("Well...? ")
+
+        if response == "1" or "quest" or "go on quest":
+            pass
+        elif response == "2" or "blacksmith" or "visit the blacksmith":
+            pass
+        elif response == "3" or "armorsmith" or "visit the armorsmith":
+            pass
+        else:
+            print "That's not an option."
 
 
 class Caves(Scene):
