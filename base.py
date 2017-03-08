@@ -25,6 +25,15 @@ class Engine(object):
 
         current_scene.enter()
 
+
+class Beginning(Scene):
+
+    def enter(self):
+        print("Welcome to Text Playing Game,")
+        print("also known as TPG.")
+        global username = input("Please enter your name, brave one: ")
+
+
 class Death(Scene):
 
     quips = [
@@ -98,6 +107,6 @@ class Map(object):
 
 
 
-a_map = Map('guild_hall')
+a_map = Map('beginning')
 a_game = Engine(a_map)
 a_game.play()
