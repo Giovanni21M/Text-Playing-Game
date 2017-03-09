@@ -51,7 +51,7 @@ class Death(Scene):
     ]
 
     def enter(self):
-        print(Death.quips[randint(0, len(self.quips)-1])
+        print(Death.quips[randint(0, len(self.quips)-1)])
         exit(1)
 
 
@@ -65,6 +65,14 @@ class Dragon(Scene):
 
     def enter(self):
         pass
+
+
+class Finished(Scene):
+
+    def enter(self):
+        print("Finished so soon?")
+        print("See you next time.")
+        return 'finished'
 
 
 class Forest(Scene):
@@ -97,21 +105,7 @@ class GuildHall(Scene):
         elif response == "3" or "armorsmith" or "visit the armorsmith":
             pass
         else:
-            print "That's not an option."
-
-
-class Finished(Scene):
-
-    def enter(self):
-        print("Finished so soon?")
-        print("See you next time.")
-        return 'finished'
-
-
-class Forest(Scene):
-
-    def enter(self):
-        pass
+            print("That's not an option.")
 
 
 class Maze(Scene):
@@ -127,6 +121,12 @@ class Minotaur(Scene):
 
 
 class Mountain(Scene):
+
+    def enter(self):
+        pass
+
+
+class Wyvern(Scene):
 
     def enter(self):
         pass
