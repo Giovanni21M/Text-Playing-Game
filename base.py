@@ -75,6 +75,14 @@ class Caves(Scene):
         pass
 
 
+class Finished(Scene):
+
+    def enter(self):
+        print("Finished so soon?")
+        print("See you next time.")
+        return 'finished'
+
+
 class Forest(Scene):
 
     def enter(self):
@@ -96,14 +104,30 @@ class Mountain(Scene):
 
 class Map(object):
 
+    scenes = {
+        'beginning': Beginning(),
+        'caves': Caves(),
+        'death': Death(),
+        'demon': Demon(),
+        'dragon': Dragon(),
+        'finished': Finished(),
+        'forest': Forest(),
+        'golem': Golem(),
+        'maze': Maze(),
+        'minotaur': Minotaur(),
+        'mountain': Mountain(),
+        'wyvern': Wyvern(),
+    }
+
     def __init__(self, start_scene):
-        pass
+        self.start_scene = start_scene
 
     def next_scene(self, scene_name):
-        pass
+        val = Map.scenes.get(scene_name)
+        return val
 
     def opening_scene(self):
-        pass
+        return self.next_scene(self.start_scene)
 
 
 
