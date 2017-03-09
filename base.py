@@ -34,6 +34,12 @@ class Beginning(Scene):
         global username = input("Please enter your name, brave one: ")
 
 
+class Caves(Scene):
+
+    def enter(self):
+        pass
+
+
 class Death(Scene):
 
     quips = [
@@ -46,6 +52,30 @@ class Death(Scene):
     def enter(self):
         print(Death.quips[randint(0, len(self.quips)-1])
         exit(1)
+
+
+class Demon(Scene):
+
+    def enter(self):
+        pass
+
+
+class Dragon(Scene):
+
+    def enter(self):
+        pass
+
+
+class Forest(Scene):
+
+    def enter(self):
+        pass
+
+
+class Golem(Scene):
+
+    def enter(self):
+        pass
 
 
 class GuildHall(Scene):
@@ -69,12 +99,6 @@ class GuildHall(Scene):
             print "That's not an option."
 
 
-class Caves(Scene):
-
-    def enter(self):
-        pass
-
-
 class Finished(Scene):
 
     def enter(self):
@@ -90,6 +114,12 @@ class Forest(Scene):
 
 
 class Maze(Scene):
+
+    def enter(self):
+        pass
+
+
+class Minotaur(Scene):
 
     def enter(self):
         pass
@@ -113,6 +143,7 @@ class Map(object):
         'finished': Finished(),
         'forest': Forest(),
         'golem': Golem(),
+        'guildhall': GuildHall(),
         'maze': Maze(),
         'minotaur': Minotaur(),
         'mountain': Mountain(),
