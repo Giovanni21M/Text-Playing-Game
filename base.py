@@ -29,10 +29,11 @@ class Engine(object):
 class Beginning(Scene):
 
     def enter(self):
-        print("Welcome to Text Playing Game,")
-        print("also known as TPG.")
         global username
         username = input("Please enter your name, brave one: ")
+        print("Welcome to Text Playing Game, %s." % username)
+        print("Prepare to begin your journey!")
+        return 'guildhall'
 
 
 class Caves(Scene):
@@ -95,17 +96,37 @@ class GuildHall(Scene):
         print("1. Go on quest.")
         print("2. Visit the blacksmith.")
         print("3. Visit the armorsmith.")
+        
+        while True:
+            response = input("Well...? ")
+            response = response.lower()
 
-        response = input("Well...? ")
-
-        if response == "1" or "quest" or "go on quest":
-            pass
-        elif response == "2" or "blacksmith" or "visit the blacksmith":
-            pass
-        elif response == "3" or "armorsmith" or "visit the armorsmith":
-            pass
-        else:
-            print("That's not an option.")
+            if response == "1" or "quest" or "go on quest":
+                print("Where does your adventure take you?")
+                print("Maze")
+                print("Mountain")
+                print("Forest")
+                print("Caves")
+                
+                while True:
+                    zone = input("")
+                    zone = zone.lower()
+                    if zone == "maze":
+                        return 'maze'
+                    elif zone == 'mountain':
+                        return 'mountain'
+                    elif zone == 'forest':
+                        return 'forest'
+                    elif zone == 'caves' or 'caves':
+                        return 'caves'
+                    else:
+                        print("There are beasts to be slain, hurry and choose!")
+            elif response == "2" or "blacksmith" or "visit the blacksmith":
+                pass
+            elif response == "3" or "armorsmith" or "visit the armorsmith":
+                pass
+            else:
+                print("That's not an option.")
 
 
 class Maze(Scene):
