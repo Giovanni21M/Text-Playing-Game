@@ -136,18 +136,19 @@ class Maze(Scene):
         print("and hear a light roar coming from inside.")
         
         while True:
-            choice = input("The roar gets louder as you go deeper.
-                Do you go turn back or go deeper? "
-            )
+            choice = input("Do you go turn back or go deeper? ")
             choice = choice.lower()
 
             if choice == "back" or "turn back" or "go back":
                 return 'guildhall'
             elif choice == "deeper" or "go deeper":
                 while True:
-                    trip_choice = input("There are now three directions
+                    trip_choice = input(
+                        """
+                        There are now three directions
                         to choose from. Do you go left,
-                        right, or head forward? "
+                        right, or head forward? 
+                        """
                     )
                     trip_choice = trip_choice.lower()
                     if trip_choice == "left" or "go left":
@@ -156,8 +157,10 @@ class Maze(Scene):
                         print("the cries are getting louder and louder.")
                         while True:
                             choice_boss = input(
-                                "Head towards the loud roar
-                                or towards the light? "
+                                """
+                                Head towards the loud roar
+                                or towards the light? 
+                                """
                             )
                             choice_boss == choice_boss.lower()
                             if choice_boss == "light":
