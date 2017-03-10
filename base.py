@@ -179,7 +179,7 @@ class Maze(Scene):
                         print("You've fallen through a hole in the floor.")
                         return 'caves'
                     else:
-                    print("Make your choice, dying soul.")
+                        print("Make your choice, dying soul.")
             else:
                 print("Are you so scared of the unknown?")
 
