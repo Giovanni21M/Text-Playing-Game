@@ -132,7 +132,53 @@ class GuildHall(Scene):
 class Maze(Scene):
 
     def enter(self):
-        pass
+        print("You enter Pandora's Labyrinth")
+        print("and hear a light roar coming from inside.")
+        
+        while True:
+            choice = input("The roar gets louder as you go deeper.
+                Do you go turn back or go deeper? "
+            )
+            choice = choice.lower()
+
+            if choice == "back" or "turn back" or "go back":
+                return 'guildhall'
+            elif choice == "deeper" or "go deeper":
+                while True:
+                    trip_choice = input("There are now three directions
+                        to choose from. Do you go left,
+                        right, or head forward? "
+                    )
+                    trip_choice = trip_choice.lower()
+                    if trip_choice == "left" or "go left":
+                        print("You've decided to go down the left path.")
+                        print("You head deeper and deeper,")
+                        print("the cries are getting louder and louder.")
+                        while True:
+                            choice_boss = input(
+                                "Head towards the loud roar
+                                or towards the light? "
+                            )
+                            choice_boss == choice_boss.lower()
+                            if choice_boss == "light":
+                                return 'forest'
+                            elif choice_boss == "roar" or "loud roar":
+                                return 'minotaur'
+                            else:
+                                "MAKE YOUR CHOICE BEFORE IT'S TOO LATE!"
+                    elif trip_choice == "right" or "go right":
+                        print("You've decided to make the right choice")
+                        print("and see a light up ahead. You walk into it.")
+                        return 'maze'
+                    elif trip_choice == "straight" or "go straight":
+                        print("You're heading deeper and deeper.")
+                        print("It's now getting hotter as well.")
+                        print("You've fallen through a hole in the floor.")
+                        return 'caves'
+                    else:
+                    print("Make your choice, dying soul.")
+            else:
+                print("Are you so scared of the unknown?")
 
 
 class Minotaur(Scene):
