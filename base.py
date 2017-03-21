@@ -3,14 +3,14 @@ from random import randint
 
 
 
-class Scene(object):
+class Scene:
 
     def enter(self):
         print("This scene is not yet configured. Subclass it and implement enter().")
         exit(1)
 
 
-class Engine(object):
+class Engine:
 
     def __init__(self, scene_map):
         self.scene_map = scene_map
@@ -73,28 +73,29 @@ class GuildHall(Scene):
         print("2. Visit the blacksmith.")
         print("3. Visit the armorsmith.")
         
-        choice = input("Well...? ")
-        choice = choice.lower()
+        while True:
+            choice = input("Well...? ")
+            choice = choice.lower()
+            if choice == "quest":
+                print("Where does your adventure take you?")
+                print("Maze")
+                print("Mountain")
 
-        if choice == "1" or "quest" or "go on quest":
-            print("Where does your adventure take you?")
-            print("Maze")
-            print("Mountain")
-                
-            choice2 = input("")
-            choice2 = choice2.lower()
-            if choice2 == "maze":
-                return 'maze'
-            elif choice2 == 'mountain':
-                return 'mountain'
+                while True:
+                    choice2 = input("")
+                    choice2 = choice2.lower()
+                    if choice2 == "maze":
+                        return 'maze'
+                    elif choice2 == 'mountain':
+                        return 'mountain'
+                    else:
+                        print("There are beasts to be slain, hurry and choose!")
+            elif choice == "blacksmith":
+                pass
+            elif choice == "armorsmith":
+                pass
             else:
-                print("There are beasts to be slain, hurry and choose!")
-        elif choice == "2" or "blacksmith" or "visit the blacksmith":
-            pass
-        elif choice == "3" or "armorsmith" or "visit the armorsmith":
-            pass
-        else:
-            print("That's not an option.")
+                print("That's not an option.")
 
 
 class Maze(Scene):
@@ -162,7 +163,7 @@ class Mountain(Scene):
         pass
 
 
-class Map(object):
+class Map:
 
     scenes = {
         'beginning': Beginning(),
