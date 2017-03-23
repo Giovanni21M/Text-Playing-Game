@@ -31,8 +31,10 @@ class Beginning(Scene):
     def enter(self):
         global username
         username = input("Please enter your name, brave one: ")
+        print("\n***********************************")
         print("Welcome to Text Playing Game, %s." % username)
         print("Prepare to begin your journey!")
+        print("***********************************\n")
         return 'guildhall'
 
 
@@ -67,17 +69,17 @@ class Finished(Scene):
 class GuildHall(Scene):
 
     def enter(self):
-        print("Welcome to the Guild Hall %s." % username)
-        print("I am your quest guide, Herold. What would you like to do?")
-        print("1. Go on quest.")
-        print("2. Visit the blacksmith.")
-        print("3. Visit the armorsmith.")
+        print("Welcome to the Guild Hall, %s." % username)
+        print("I am your quest guide, Herold. What would you like to do?\n")
+        print("Go on quest.")
+        print("Visit the blacksmith.")
+        print("Visit the armorsmith.\n")
         
         while True:
             choice = input("Well...? ")
             choice = choice.lower()
             if choice == "quest":
-                print("Where does your adventure take you?")
+                print("\nWhere does your adventure take you?\n")
                 print("Maze")
                 print("Mountain")
                 while True:
@@ -88,20 +90,20 @@ class GuildHall(Scene):
                     elif choice2 == 'mountain':
                         return 'mountain'
                     else:
-                        print("There are beasts to be slain, hurry and choose!")
+                        print("\nThere are beasts to be slain, hurry and choose!\n")
             elif choice == "blacksmith":
                 pass
             elif choice == "armorsmith":
                 pass
             else:
-                print("That's not an option.")
+                print("\nThat's not an option.\n")
 
 
 class Maze(Scene):
 
     def enter(self):
-        print("You enter Pandora's Labyrinth")
-        print("and hear a light roar coming from inside.")
+        print("\nYou enter Pandora's Labyrinth")
+        print("and hear a light roar coming from inside.\n")
         
         while True:
             choice = input("Do you go turn back or go deeper? ")
@@ -111,45 +113,35 @@ class Maze(Scene):
                 return 'guildhall'
             elif choice == "deeper":
                 while True:
-                    choice2 = input(
-                        """
-                        There are now three directions
-                        to choose from. Do you go left,
-                        right, or head forward? 
-                        """
-                    )
+                    print("\nThere are now three directions to choose from.\n")
+                    choice2 = input("Do you go left, right, or straight?")
                     choice2 = choice2.lower()
                     if choice2 == "left":
-                        print("You've decided to go down the left path.")
+                        print("\nYou've decided to go down the left path.")
                         print("You head deeper and deeper,")
-                        print("the cries are getting louder and louder.")
+                        print("the cries are getting louder and louder.\n")
                         while True:
-                            choice_boss = input(
-                                """
-                                Head towards the loud roar
-                                or towards the light? 
-                                """
-                            )
-                            choice_boss == choice_boss.lower()
-                            if choice_boss == "light":
+                            choice3 = input("Head towards the roar or light?")
+                            choice3 == choice3.lower()
+                            if choice3 == "light":
                                 return 'mountain'
-                            elif choice_boss == "roar":
+                            elif choice3 == "roar":
                                 return 'minotaur'
                             else:
-                                "MAKE YOUR CHOICE BEFORE IT'S TOO LATE!"
+                                print("\nMAKE YOUR CHOICE BEFORE IT'S TOO LATE!\n")
                     elif choice2 == "right":
-                        print("You've decided to make the right choice")
+                        print("\nYou've decided to make the right choice")
                         print("and see a light up ahead. You walk into it.")
                         return 'maze'
                     elif choice2 == "straight":
-                        print("You're heading deeper and deeper.")
+                        print("\nYou're heading deeper and deeper.")
                         print("It's now getting hotter as well.")
                         print("You've fallen through a hole in the floor.")
                         return 'guildhall'
                     else:
-                        print("Make your choice, dying soul.")
+                        print("\nMake your choice, dying soul.\n")
             else:
-                print("Are you so scared of the unknown?")
+                print("\nAre you so scared of the unknown?\n")
 
 
 class Minotaur(Scene):
