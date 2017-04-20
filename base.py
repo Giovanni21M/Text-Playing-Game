@@ -180,6 +180,34 @@ class Map:
         return self.next_scene(self.start_scene)
 
 
+class Battle:
+
+    characters = {
+        'hero' : {
+            hp : 10,
+            attack : 10,
+            defense : 10
+        },
+        'minotaur_char' : {
+            hp : 10,
+            attack : 10,
+            defense : 10
+        },
+        'dragon_char' : {
+            hp : 10,
+            attack : 10,
+            defense : 10
+        }
+    }
+
+    def enemy_damage(self):
+        enemy_atk = self.get(characters[attack])
+        player_def = self.get(characters[defense])
+        player_hp = self.get(characters[hp])
+
+        enemy_atk - player_def == enemy_dmg
+        player_hp -= enemy_dmg
+
 
 a_map = Map('beginning')
 a_game = Engine(a_map)
