@@ -184,29 +184,37 @@ class Battle:
 
     characters = {
         'hero' : {
-            hp : 10,
-            attack : 10,
-            defense : 10
+            'hp' : 10,
+            'attack' : 10,
+            'defense' : 10
         },
         'minotaur_char' : {
-            hp : 10,
-            attack : 10,
-            defense : 10
+            'hp' : 10,
+            'attack' : 10,
+            'defense' : 10
         },
         'dragon_char' : {
-            hp : 10,
-            attack : 10,
-            defense : 10
+            'hp' : 10,
+            'attack' : 10,
+            'defense' : 10
         }
     }
 
-    def enemy_damage(self):
-        enemy_atk = self.get(characters[attack])
-        player_def = self.get(characters[defense])
-        player_hp = self.get(characters[hp])
+    def enemy_damage(self, char_data):
+        enemy_atk = self.get(characters[char_data]['attack'])
+        player_def = self.get(characters['hero']['defense'])
+        player_hp = self.get(characters['hero']['hp'])
 
-        enemy_atk - player_def == enemy_dmg
-        player_hp -= enemy_dmg
+        enemy_atk - player_def == enemy_dps
+        player_hp -= enemy_dps
+
+    def player_damage(self, enemy_data):
+        player_atk = self.get(characters['hero']['attack'])
+        enemy_def = self.get(characters[enemy_data]['defense'])
+        enemy_hp = self.get(characters[enemy_data]['hp'])
+
+        player_atk - enemy_def == player_dps
+        enemy_hp -= player_dps
 
 
 a_map = Map('beginning')
