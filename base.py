@@ -147,7 +147,21 @@ class Maze(Scene):
 class Minotaur(Scene):
 
     def enter(self):
-        pass
+        print("You've encountered the mighty Minotaur,")
+        print("get ready to engage in battle.")
+
+        player_health = Battle.characters['hero']['hp']
+        enemy_health = Battle.characters['minotaur']['hp']
+
+        while player_health or enemy_health != 0:
+            choice = input("Do you attack? ")
+            choice == choice.lower()
+            if choice == "yes":
+                Battle.player_damage('minotaur')
+            elif choice == "no":
+                Battle.enemy_damage('minotaur')
+            else:
+                print("You left yourself open!")
 
 
 class Mountain(Scene):
@@ -200,8 +214,8 @@ class Battle:
         }
     }
 
-    def enemy_damage(self, char_data):
-        enemy_atk = self.get(characters[char_data]['attack'])
+    def enemy_damage(self, enemy_data):
+        enemy_atk = self.get(characters[enemy_data]['attack'])
         player_def = self.get(characters['hero']['defense'])
         player_hp = self.get(characters['hero']['hp'])
 
