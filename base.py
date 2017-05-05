@@ -92,7 +92,7 @@ class GuildHall(Scene):
                     choice2 = choice2.lower()
                     if choice2 == "maze":
                         return 'maze'
-                    elif choice2 == 'mountain':
+                    elif choice2 == "mountain":
                         return 'mountain'
                     else:
                         print("\nThere are beasts to be slain, hurry and choose!\n")
@@ -161,6 +161,9 @@ class Minotaur(Scene):
             choice == choice.lower()
             if choice == "yes":
                 Battle.player_damage('minotaur')
+                if Battle.characters['minotaur']['hp'] == 0:
+                    print("Congragulations, you have slain the Minotaur!")
+                    return 'guildhall'
             elif choice == "no":
                 Battle.enemy_damage('minotaur')
             else:
@@ -206,12 +209,12 @@ class Battle:
             'attack' : 10,
             'defense' : 10
         },
-        'minotaur_char' : {
+        'minotaur' : {
             'hp' : 10,
             'attack' : 10,
             'defense' : 10
         },
-        'dragon_char' : {
+        'dragon' : {
             'hp' : 10,
             'attack' : 10,
             'defense' : 10
