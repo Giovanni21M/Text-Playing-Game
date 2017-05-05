@@ -38,6 +38,12 @@ class Beginning(Scene):
         return 'guildhall'
 
 
+class Blacksmith(Scene):
+
+    def enter(self):
+        pass
+
+
 class Death(Scene):
 
     quips = [
@@ -73,7 +79,6 @@ class GuildHall(Scene):
         print("I am your quest guide, Herold. What would you like to do?\n")
         print("Go on quest.")
         print("Visit the blacksmith.")
-        print("Visit the armorsmith.\n")
         
         while True:
             choice = input("Well...? ")
@@ -92,8 +97,6 @@ class GuildHall(Scene):
                     else:
                         print("\nThere are beasts to be slain, hurry and choose!\n")
             elif choice == "blacksmith":
-                pass
-            elif choice == "armorsmith":
                 pass
             else:
                 print("\nThat's not an option.\n")
@@ -174,6 +177,7 @@ class Map:
 
     scenes = {
         'beginning': Beginning(),
+        'blacksmith': Blacksmith(),
         'death': Death(),
         'dragon': Dragon(),
         'finished': Finished(),
