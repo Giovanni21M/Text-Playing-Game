@@ -226,7 +226,7 @@ class Battle:
         player_def = Battle.characters['hero']['defense']
         player_hp = Battle.characters['hero']['hp']
 
-        enemy_atk - player_def == enemy_dps
+        enemy_dps == enemy_atk - player_def
         player_hp -= enemy_dps
 
     def player_damage(enemy_data):
@@ -234,7 +234,7 @@ class Battle:
         enemy_def = Battle.characters[enemy_data]['defense']
         enemy_hp = Battle.characters[enemy_data]['hp']
 
-        player_atk - enemy_def == player_dps
+        player_dps == player_atk - enemy_def
         enemy_hp -= player_dps
 
 
