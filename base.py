@@ -117,14 +117,14 @@ class Maze(Scene):
             elif choice == "deeper":
                 while True:
                     print("\nThere are now three directions to choose from.\n")
-                    choice2 = input("Do you go left, right, or straight?")
+                    choice2 = input("Do you go left, right, or straight? ")
                     choice2 = choice2.lower()
                     if choice2 == "left":
                         print("\nYou've decided to go down the left path.")
                         print("You head deeper and deeper,")
                         print("the cries are getting louder and louder.\n")
                         while True:
-                            choice3 = input("Head towards the roar or light?")
+                            choice3 = input("Head towards the roar or light? ")
                             choice3 == choice3.lower()
                             if choice3 == "light":
                                 return 'mountain'
@@ -221,18 +221,18 @@ class Battle:
         }
     }
 
-    def enemy_damage(self, enemy_data):
-        enemy_atk = self.get(characters[enemy_data]['attack'])
-        player_def = self.get(characters['hero']['defense'])
-        player_hp = self.get(characters['hero']['hp'])
+    def enemy_damage(enemy_data):
+        enemy_atk = Battle.characters[enemy_data]['attack']
+        player_def = Battle.characters['hero']['defense']
+        player_hp = Battle.characters['hero']['hp']
 
         enemy_atk - player_def == enemy_dps
         player_hp -= enemy_dps
 
-    def player_damage(self, enemy_data):
-        player_atk = self.get(characters['hero']['attack'])
-        enemy_def = self.get(characters[enemy_data]['defense'])
-        enemy_hp = self.get(characters[enemy_data]['hp'])
+    def player_damage(enemy_data):
+        player_atk = Battle.characters['hero']['attack']
+        enemy_def = Battle.characters[enemy_data]['defense']
+        enemy_hp = Battle.characters[enemy_data]['hp']
 
         player_atk - enemy_def == player_dps
         enemy_hp -= player_dps
