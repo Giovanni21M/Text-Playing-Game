@@ -106,7 +106,7 @@ class Maze(Scene):
 
     def enter(self):
         print("\nYou enter Pandora's Labyrinth")
-        print("and hear a light roar coming from inside.\n")
+        print("and hear a light roar coming from inside.")
         
         while True:
             choice = input("Do you go turn back or go deeper? ")
@@ -116,13 +116,13 @@ class Maze(Scene):
                 return 'guildhall'
             elif choice == "deeper":
                 while True:
-                    print("\nThere are now three directions to choose from.\n")
+                    print("\nThere are now three directions to choose from.")
                     choice2 = input("Do you go left, right, or straight? ")
                     choice2 = choice2.lower()
                     if choice2 == "left":
                         print("\nYou've decided to go down the left path.")
                         print("You head deeper and deeper,")
-                        print("the cries are getting louder and louder.\n")
+                        print("the cries are getting louder and louder.")
                         while True:
                             choice3 = input("Head towards the roar or light? ")
                             choice3 == choice3.lower()
@@ -150,7 +150,7 @@ class Maze(Scene):
 class Minotaur(Scene):
 
     def enter(self):
-        print("You've encountered the mighty Minotaur,")
+        print("\nYou've encountered the mighty Minotaur,")
         print("get ready to engage in battle.")
 
         player_health = Battle.characters['hero']['hp']
@@ -159,15 +159,15 @@ class Minotaur(Scene):
         while player_health or enemy_health != 0:
             choice = input("Do you attack? ")
             choice == choice.lower()
-            if choice == "yes":
+            if choice == "yes" or "attack":
                 Battle.player_damage('minotaur')
                 if Battle.characters['minotaur']['hp'] == 0:
-                    print("Congragulations, you have slain the Minotaur!")
+                    print("\nCongragulations, you have slain the Minotaur!")
                     return 'guildhall'
             elif choice == "no":
                 Battle.enemy_damage('minotaur')
             else:
-                print("You left yourself open!")
+                print("\nYou left yourself open!\n")
 
 
 class Mountain(Scene):
