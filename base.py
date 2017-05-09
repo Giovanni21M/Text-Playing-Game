@@ -208,18 +208,18 @@ class Battle:
     characters = {
         'hero' : {
             'hp' : 10,
-            'attack' : 10,
+            'attack' : randint(8,12),
             'defense' : 10
         },
         'minotaur' : {
-            'hp' : 10,
-            'attack' : 10,
-            'defense' : 10
+            'hp' : 13,
+            'attack' : randint(9,11),
+            'defense' : 9
         },
         'dragon' : {
-            'hp' : 10,
-            'attack' : 10,
-            'defense' : 10
+            'hp' : 50,
+            'attack' : randint(25,40),
+            'defense' : 30
         }
     }
 
@@ -228,16 +228,22 @@ class Battle:
         player_def = Battle.characters['hero']['defense']
         player_hp = Battle.characters['hero']['hp']
 
-        enemy_dps = enemy_atk - player_def
-        player_hp -= enemy_dps
+        if enemy_atk > player_def:
+            enemy_dps = enemy_atk - player_def
+            player_hp -= enemy_dps
+        else:
+            player_hp -= 1
 
     def player_damage(enemy_data):
         player_atk = Battle.characters['hero']['attack']
         enemy_def = Battle.characters[enemy_data]['defense']
         enemy_hp = Battle.characters[enemy_data]['hp']
 
-        player_dps = player_atk - enemy_def
-        enemy_hp -= player_dps
+        if player_atk > enemy_def:
+            player_dps = player_atk - enemy_def
+            enemy_hp -= player_dps
+        else:
+            enemy_hp -= 1
 
 
 a_map = Map('beginning')
