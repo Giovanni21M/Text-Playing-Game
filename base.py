@@ -161,11 +161,13 @@ class Minotaur(Scene):
             choice == choice.lower()
             if choice == "yes" or "attack":
                 Battle.player_damage('minotaur')
+                print("Enemy HP: ", enemy_health)
                 if Battle.characters['minotaur']['hp'] == 0:
                     print("\nCongragulations, you have slain the Minotaur!")
                     return 'guildhall'
             elif choice == "no":
                 Battle.enemy_damage('minotaur')
+                print("Your HP: ", player_health)
             else:
                 print("\nYou left yourself open!\n")
 
