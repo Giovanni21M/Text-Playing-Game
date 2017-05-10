@@ -156,10 +156,10 @@ class Minotaur(Scene):
         player_health = Battle.characters['hero']['hp']
         enemy_health = Battle.characters['minotaur']['hp']
 
-        while player_health or enemy_health != 0:
+        while (player_health != 0) or (enemy_health != 0):
             choice = input("Do you attack? ")
             choice == choice.lower()
-            if choice == "yes" or "attack":
+            if (choice == "yes") or (choice == "attack"):
                 Battle.player_damage('minotaur')
                 print("Enemy HP: ", enemy_health)
                 if Battle.characters['minotaur']['hp'] == 0:
@@ -170,6 +170,8 @@ class Minotaur(Scene):
                 print("Your HP: ", player_health)
             else:
                 print("\nYou left yourself open!\n")
+                Battle.player_damage('minotaur')
+                print("Your HP: ", player_health)
 
 
 class Mountain(Scene):
@@ -213,7 +215,7 @@ class Battle:
         },
         'minotaur' : {
             'hp' : 13,
-            'attack' : randint(9,11),
+            'attack' : randint(9,14),
             'defense' : 9
         },
         'dragon' : {
