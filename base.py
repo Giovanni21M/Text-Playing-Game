@@ -153,25 +153,34 @@ class Minotaur(Scene):
         print("\nYou've encountered the mighty Minotaur,")
         print("get ready to engage in battle.")
 
-        player_health = Battle.characters['hero']['hp']
-        enemy_health = Battle.characters['minotaur']['hp']
+        while (
+            (Battle.characters['hero']['hp'] != 0) or
+            (Battle.characters['minotaur']['hp'] != 0)
+        ):
 
-        while (player_health != 0) or (enemy_health != 0):
             choice = input("Do you attack? ")
-            choice == choice.lower()
+            choice = choice.lower()
+
             if (choice == "yes") or (choice == "attack"):
                 Battle.player_damage('minotaur')
-                print("Enemy HP: ", enemy_health)
-                if Battle.characters['minotaur']['hp'] == 0:
-                    print("\nCongragulations, you have slain the Minotaur!")
-                    return 'guildhall'
+                print("Enemy HP: ", Battle.characters['minotaur']['hp'])
             elif choice == "no":
                 Battle.enemy_damage('minotaur')
-                print("Your HP: ", player_health)
+                print("Your HP: ", Battle.characters['hero']['hp'])
             else:
                 print("\nYou left yourself open!\n")
                 Battle.player_damage('minotaur')
-                print("Your HP: ", player_health)
+                print("Your HP: ", Battle.characters['hero']['hp'])
+
+            if Battle.characters['hero']['hp'] <= 0:
+                print("You have been slain by the mighty Minotaur!.")
+                return 'death'
+            elif Battle.characters['minotaur']['hp'] <= 0:
+                print("You have slain the Minotaur!")
+                Battle.characters['hero']['hp'] = 25
+                Battle.characters['hero']['attack'] = 25
+                Battle.characters['hero']['defense'] = 25
+                return 'guildhall'
 
 
 class Mountain(Scene):
@@ -228,13 +237,12 @@ class Battle:
     def enemy_damage(enemy_data):
         enemy_atk = Battle.characters[enemy_data]['attack']
         player_def = Battle.characters['hero']['defense']
-        player_hp = Battle.characters['hero']['hp']
 
         if enemy_atk > player_def:
             enemy_dps = enemy_atk - player_def
-            player_hp -= enemy_dps
+            Battle.characters['hero']['hp'] -= enemy_dps
         else:
-            player_hp -= 1
+            Battle.characters['hero']['hp'] -= 1
 
     def player_damage(enemy_data):
         player_atk = Battle.characters['hero']['attack']
@@ -243,9 +251,9 @@ class Battle:
 
         if player_atk > enemy_def:
             player_dps = player_atk - enemy_def
-            enemy_hp -= player_dps
+            Battle.characters[enemy_data]['hp'] -= player_dps
         else:
-            enemy_hp -= 1
+            Battle.characters[enemy_data]['hp'] -= 1
 
 
 a_map = Map('beginning')
