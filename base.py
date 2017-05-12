@@ -84,7 +84,7 @@ class GuildHall(Scene):
             choice = input("Well...? ")
             choice = choice.lower()
             if choice == "quest":
-                print("\nWhere does your adventure take you?\n")
+                print("\nWhere does your adventure take you\n")
                 print("Maze")
                 print("Mountain")
                 while True:
@@ -181,12 +181,15 @@ class Minotaur(Scene):
                 Battle.characters['hero']['attack'] = 25
                 Battle.characters['hero']['defense'] = 25
                 return 'guildhall'
+            else:
+                print("Wtf is going on?!")
 
 
 class Mountain(Scene):
 
     def enter(self):
-        pass
+        print("You've fallen off the edge of the mountain.")
+        return 'death'
 
 
 class Map:
