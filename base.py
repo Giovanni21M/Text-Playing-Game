@@ -62,7 +62,8 @@ class Death(Scene):
 class Dragon(Scene):
 
     def enter(self):
-        pass
+        print("Before you can tell what it is you die.")
+        return 'death'
 
 
 class Finished(Scene):
@@ -213,6 +214,7 @@ class Mountain(Scene):
                     print("Two of them try running away, you grab one")
                     print("of their bows and shoot them both down.")
                     print("You've made it out alive.")
+                    return 'mountain'
                 else:
                     print("The bandits kill you and take your belongings.")
                     return 'death'
