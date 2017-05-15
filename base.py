@@ -202,10 +202,18 @@ class Mountain(Scene):
                 print("is engulfed in darkness.")
                 return 'dragon'
             else:
-                print("\nBandits have surrounded you, this may be your death.")
-                sleep(5)
+                print("\nYou spot bandits in the distance.")
+                sleep(1)
+                print("*thump*")
+                sleep(1)
+                print("*thump*")
+                sleep(1)
+                print("*thump*")
                 print("They're getting closer.")
-                sleep(3)
+                sleep(1)
+                print("*thump*")
+                sleep(1)
+                print("The bandits have now surrounded you.")
                 luck = randint(0,10)
                 if luck % 2 == 0:
                     print("You easily slay 3 of them.")
