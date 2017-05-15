@@ -1,5 +1,6 @@
 from sys import exit
 from random import randint
+from time import sleep
 
 
 
@@ -188,8 +189,33 @@ class Minotaur(Scene):
 class Mountain(Scene):
 
     def enter(self):
-        print("You've fallen off the edge of the mountain.")
-        return 'death'
+        print("\nThere are two paths to choose from, do so.")
+        choice = input("Left or right? ")
+        choice = choice.lower()
+        
+        while True:
+            if choice == "left":
+                print("\nHalf way up you lose your footing and fall off.")
+                return 'death'
+            elif choice == "right":
+                print("\nA gust of wind almost blows you off the mountain.")
+                print("You hold brace your self and soon notice the sky")
+                print("is engulfed in darkness.")
+                return 'dragon'
+            else:
+                print("\nBandits have surrounded you, this may be your death.")
+                sleep(5)
+                print("They're getting closer.")
+                sleep(3)
+                luck = randint(0,10)
+                if luck % 2 == 0:
+                    print("You easily slay 3 of them.")
+                    print("Two of them try running away, you grab one")
+                    print("of their bows and shoot them both down.")
+                    print("You've made it out alive.")
+                else:
+                    print("The bandits kill you and take your belongings.")
+                    return 'death'
 
 
 class Map:
