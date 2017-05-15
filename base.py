@@ -183,8 +183,6 @@ class Minotaur(Scene):
                 Battle.characters['hero']['attack'] = 25
                 Battle.characters['hero']['defense'] = 25
                 return 'guildhall'
-            else:
-                print("Wtf is going on?!")
 
 
 class Mountain(Scene):
@@ -250,8 +248,9 @@ class Battle:
     characters = {
         'hero' : {
             'hp' : 10,
-            'attack' : randint(8,12),
-            'defense' : 10
+            'attack' : randint(8,11),
+            'defense' : 10,
+            'level': 1
         },
         'minotaur' : {
             'hp' : 13,
@@ -260,7 +259,7 @@ class Battle:
         },
         'dragon' : {
             'hp' : 50,
-            'attack' : randint(25,40),
+            'attack' : randint(25,41),
             'defense' : 30
         }
     }
@@ -278,7 +277,6 @@ class Battle:
     def player_damage(enemy_data):
         player_atk = Battle.characters['hero']['attack']
         enemy_def = Battle.characters[enemy_data]['defense']
-        enemy_hp = Battle.characters[enemy_data]['hp']
 
         if player_atk > enemy_def:
             player_dps = player_atk - enemy_def
