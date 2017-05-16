@@ -319,6 +319,7 @@ class Leveling:
         print("Experience: ", Battle.characters['hero']['experience'])
 
     def extra_exp(exp):
+        global extra
         extra = Battle.characters['hero']['experience'] - exp
 
     def exp_boost(char_exp):
@@ -330,15 +331,15 @@ class Leveling:
             print("You gain 15 experience points.")
 
         if Battle.characters['hero']['experience'] >= 20:
-            extra = extra_exp(20)
+            extra_exp(20)
             level_up()
             exp_reset(extra)
         elif Battle.characters['hero']['experience'] >= 50:
-            extra = extra_exp(50)
+            extra_exp(50)
             level_up()
             exp_reset(extra)
         elif Battle.characters['hero']['experience'] >= 80:
-            extra = extra_exp(80)
+            extra_exp(80)
             level_up()
             exp_reset(extra)
 
