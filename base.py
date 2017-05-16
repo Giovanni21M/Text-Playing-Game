@@ -310,11 +310,11 @@ class Leveling:
         print("********************")
 
         if Battle.characters['hero']['level'] == 2:
-            stat_increase(13, 18)
+            Leveling.stat_increase(13, 18)
         elif Battle.characters['hero']['level'] == 3:
-            stat_increase(17, 24)
+            Leveling.stat_increase(17, 24)
         elif Battle.characters['hero']['level'] == 4:
-            stat_increase(30, 45)   
+            Leveling.stat_increase(30, 45)   
 
     def exp_reset(value):
         Battle.characters['hero']['experience'] = 0 + value
@@ -333,17 +333,17 @@ class Leveling:
             print("\nYou gain 15 experience points.")
 
         if Battle.characters['hero']['experience'] >= 20:
-            extra_exp(20)
-            level_up()
-            exp_reset(extra)
+            Leveling.extra_exp(20)
+            Leveling.level_up()
+            Leveling.exp_reset(extra)
         elif Battle.characters['hero']['experience'] >= 50:
-            extra_exp(50)
-            level_up()
-            exp_reset(extra)
+            Leveling.extra_exp(50)
+            Leveling.level_up()
+            Leveling.exp_reset(extra)
         elif Battle.characters['hero']['experience'] >= 80:
-            extra_exp(80)
-            level_up()
-            exp_reset(extra)
+            Leveling.extra_exp(80)
+            Leveling.level_up()
+            Leveling.exp_reset(extra)
 
 
 a_map = Map('beginning')
