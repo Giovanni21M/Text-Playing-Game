@@ -171,7 +171,7 @@ class Minotaur(Scene):
                 print("Your HP: ", Battle.characters['hero']['hp'])
             else:
                 print("\nYou left yourself open!\n")
-                Battle.player_damage('minotaur')
+                Battle.enemy_damage('minotaur')
                 print("Your HP: ", Battle.characters['hero']['hp'])
 
             if Battle.characters['hero']['hp'] <= 0:
@@ -197,7 +197,7 @@ class Mountain(Scene):
                 return 'death'
             elif choice == "right":
                 print("\nA gust of wind almost blows you off the mountain.")
-                print("You hold brace your self and soon notice the sky")
+                print("You brace yourself and soon notice the sky")
                 print("is engulfed in darkness.")
                 return 'dragon'
             else:
