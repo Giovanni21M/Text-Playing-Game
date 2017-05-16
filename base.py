@@ -31,7 +31,7 @@ class Beginning(Scene):
 
     def enter(self):
         global username
-        username = input("Please enter your name, brave one: ")
+        username = input("\nPlease enter your name, brave one: ")
         print("\n***********************************")
         print("Welcome to Text Playing Game, %s." % username)
         print("Prepare to begin your journey!")
@@ -48,10 +48,10 @@ class Blacksmith(Scene):
 class Death(Scene):
 
     quips = [
-        "Good game.",
-        "Get rekt nerd.",
-        "Git gud.",
-        "Sleep with the L."
+        "\nGood game.",
+        "\nGet rekt nerd.",
+        "\nGit gud.",
+        "\nSleep with the L."
     ]
 
     def enter(self):
@@ -62,14 +62,14 @@ class Death(Scene):
 class Dragon(Scene):
 
     def enter(self):
-        print("Before you can tell what it is you die.")
+        print("\nBefore you can tell what it is you die.")
         return 'death'
 
 
 class Finished(Scene):
 
     def enter(self):
-        print("Finished so soon?")
+        print("\nFinished so soon?")
         print("See you next time.")
         return 'finished'
 
@@ -77,7 +77,7 @@ class Finished(Scene):
 class GuildHall(Scene):
 
     def enter(self):
-        print("Welcome to the Guild Hall, %s." % username)
+        print("\nWelcome to the Guild Hall, %s." % username)
         print("I am your quest guide, Herold. What would you like to do?\n")
         print("Go on quest.")
         print("Visit the blacksmith.")
@@ -160,7 +160,7 @@ class Minotaur(Scene):
             (Battle.characters['minotaur']['hp'] != 0)
         ):
 
-            choice = input("Do you attack? ")
+            choice = input("\nDo you attack? ")
             choice = choice.lower()
 
             if (choice == "yes") or (choice == "attack"):
@@ -175,10 +175,10 @@ class Minotaur(Scene):
                 print("Your HP: ", Battle.characters['hero']['hp'])
 
             if Battle.characters['hero']['hp'] <= 0:
-                print("You have been slain by the mighty Minotaur!.")
+                print("\nYou have been slain by the mighty Minotaur!.")
                 return 'death'
             elif Battle.characters['minotaur']['hp'] <= 0:
-                print("You have slain the Minotaur!")
+                print("\nYou have slain the Minotaur!")
                 Battle.characters['hero']['hp'] = 10
                 Leveling.exp_boost("minotaur")
                 return 'guildhall'
@@ -215,13 +215,13 @@ class Mountain(Scene):
                 print("The bandits have now surrounded you.")
                 luck = randint(0,10)
                 if luck % 2 == 0:
-                    print("You easily slay 3 of them.")
+                    print("\nYou easily slay 3 of them.")
                     print("Two of them try running away, you grab one")
                     print("of their bows and shoot them both down.")
                     print("You've made it out alive.")
                     return 'mountain'
                 else:
-                    print("The bandits kill you and take your belongings.")
+                    print("\nThe bandits kill you and take your belongings.")
                     return 'death'
 
 
@@ -305,7 +305,9 @@ class Leveling:
 
     def level_up():
         Battle.characters['hero']['level'] += 1
+        print("\n********************")
         print("You are now level", Battle.characters['hero']['level'])
+        print("********************")
 
         if Battle.characters['hero']['level'] == 2:
             stat_increase(13, 18)
@@ -316,7 +318,7 @@ class Leveling:
 
     def exp_reset(value):
         Battle.characters['hero']['experience'] = 0 + value
-        print("Experience: ", Battle.characters['hero']['experience'])
+        print("\nExperience: ", Battle.characters['hero']['experience'])
 
     def extra_exp(exp):
         global extra
@@ -325,10 +327,10 @@ class Leveling:
     def exp_boost(char_exp):
         if char_exp == "minotaur":
             Battle.characters['hero']['experience'] += 5
-            print("You gain 5 experience points.")
+            print("\nYou gain 5 experience points.")
         elif char_exp == "dragon":
             Battle.characters['hero']['experience'] += 15
-            print("You gain 15 experience points.")
+            print("\nYou gain 15 experience points.")
 
         if Battle.characters['hero']['experience'] >= 20:
             extra_exp(20)
