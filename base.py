@@ -179,9 +179,8 @@ class Minotaur(Scene):
                 return 'death'
             elif Battle.characters['minotaur']['hp'] <= 0:
                 print("You have slain the Minotaur!")
-                Battle.characters['hero']['hp'] = 25
-                Battle.characters['hero']['attack'] = 25
-                Battle.characters['hero']['defense'] = 25
+                Battle.characters['hero']['hp'] = 10
+                Leveling.exp_boost("minotaur")
                 return 'guildhall'
 
 
