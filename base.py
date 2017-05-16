@@ -256,9 +256,10 @@ class Battle:
     characters = {
         'hero' : {
             'hp' : 10,
-            'attack' : randint(8,11),
+            'attack' : randint(8,12),
             'defense' : 10,
-            'level': 1
+            'level': 1,
+            'experience': 0,
         },
         'minotaur' : {
             'hp' : 13,
@@ -291,6 +292,56 @@ class Battle:
             Battle.characters[enemy_data]['hp'] -= player_dps
         else:
             Battle.characters[enemy_data]['hp'] -= 1
+
+
+class Leveling:
+
+    def stat_increase(x, y):
+        Battle.characters['hero']['hp'] += Battle.characters['hero']['hp'] / 2
+        Battle.characters['hero']['attack'] = randint(x,y)
+        Battle.characters['hero']['defense'] += Battle.characters['hero']['defense'] / 2
+        print("HP: ", Battle.characters['hero']['hp'])
+        print("Atk: ", Battle.characters['hero']['attack'])
+        print("Def: ", Battle.characters['hero']['defense'])
+
+    def level_up():
+        Battle.characters['hero']['level'] += 1
+        print("You are now level", Battle.characters['hero']['level']
+
+        if Battle.characters['hero']['level'] == 2:
+            stat_increase(13, 18)
+        elif Battle.characters['hero']['level'] == 3:
+            stat_increase(17, 24)
+        elif Battle.characters['hero']['level'] == 4:
+            stat_increase(30, 45)   
+
+    def exp_reset(value):
+        Battle.characters['hero']['experience'] = 0 + value
+        print("Experience: ", Battle.characters['hero']['experience'])
+
+    def extra_exp(exp):
+        extra = Battle.characters['hero']['experience'] - exp
+
+    def exp_boost(char_exp):
+        if char_exp == "minotaur":
+            Battle.characters['hero']['experience'] += 5
+            print("You gain 5 experience points.")
+        elif char_exp == "dragon":
+            Battle.characters['hero']['experience'] += 15
+            print("You gain 15 experience points.")
+
+        if Battle.characters['hero']['experience'] >= 20:
+            extra = extra_exp(20)
+            level_up()
+            exp_reset(extra)
+        elif Battle.characters['hero']['experience'] >= 50:
+            extra = extra_exp(50)
+            level_up()
+            exp_reset(extra)
+        elif Battle.characters['hero']['experience'] >= 80
+            extra = extra_exp(80)
+            level_up()
+            exp_reset(extra)
 
 
 a_map = Map('beginning')
