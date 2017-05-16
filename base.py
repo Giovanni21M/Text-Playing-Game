@@ -371,9 +371,23 @@ class Trading:
         print("Your currency is currently at, " Battle.characters['hero']['currency']
 
     def purchase(relic):
-        if relic == 'dagger':
+        if (
+            (Battle.characters['hero']['currency'] >= 15) and
+            (relic == 'dagger')
+        ):
             Battle.characters['hero']['currency'] -= 15
             Battle.characters['hero']['equipment'] = 'dagger'
+            Trading.leftover('dagger')
+        elif (
+            (Battle.characters['hero']['currency'] >= 35) and
+            (relic == 'sword')
+        ):
+            Battle.characters['hero']['currency'] -= 35
+            Battle.characters['hero']['equipment'] = 'sword'
+            Trading.leftover('sword')
+        else:
+            print("You don't have enough coins for this relic.")
+
 
 
 a_map = Map('beginning')
