@@ -259,6 +259,8 @@ class Battle:
             'defense' : 10,
             'level': 1,
             'experience': 0,
+            'equipment': 'item',
+            'currency': 0
         },
         'minotaur' : {
             'hp' : 13,
@@ -344,6 +346,34 @@ class Leveling:
             Leveling.extra_exp(80)
             Leveling.level_up()
             Leveling.exp_reset(extra)
+
+
+class Trading:
+
+    dagger = "Minotaur's Horn Dagger"
+    sword = "Dragon Fang Sword"
+
+    def leftover(relic):
+        print("You have purchased the %s!" % (dagger,))
+        if relic == 'dagger':
+            print("You have spent 15 coins on this relic."
+        elif relic == 'sword':
+            print("You have spent 35 coins on this relic."
+
+        print("You have %g coins leftover." % (Battle.characters['hero']['currency'],))
+
+    def currency_earn(enemy):
+        if enemy == 'minotaur':
+            Battle.characters['hero']['currency'] += randint(2,6)
+        elif enemy == 'dragon':
+            Battle.characters['hero']['currency'] += randint(9,16)
+ 
+        print("Your currency is currently at, " Battle.characters['hero']['currency']
+
+    def purchase(relic):
+        if relic == 'dagger':
+            Battle.characters['hero']['currency'] -= 15
+            Battle.characters['hero']['equipment'] = 'dagger'
 
 
 a_map = Map('beginning')
