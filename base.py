@@ -337,7 +337,7 @@ class Leveling:
             extra = extra_exp(50)
             level_up()
             exp_reset(extra)
-        elif Battle.characters['hero']['experience'] >= 80
+        elif Battle.characters['hero']['experience'] >= 80:
             extra = extra_exp(80)
             level_up()
             exp_reset(extra)
