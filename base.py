@@ -305,7 +305,7 @@ class Leveling:
 
     def level_up():
         Battle.characters['hero']['level'] += 1
-        print("You are now level", Battle.characters['hero']['level']
+        print("You are now level", Battle.characters['hero']['level'])
 
         if Battle.characters['hero']['level'] == 2:
             stat_increase(13, 18)
