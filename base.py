@@ -54,13 +54,13 @@ class Blacksmith(Scene):
                 print("2. Dragon Fang Sword")
 
                 while True:
-                    choice = input("Weapon: ")
-                    choice = choice.lower()
+                    choice2 = input("Weapon: ")
+                    choice2 = choice2.lower()
 
-                    if (choice == "1") or (choice == "dagger"):
+                    if (choice2 == "1") or (choice2 == "dagger"):
                         Trading.purhcase('dagger')
                         return 'guildhall'
-                    elif (choice == "2") or (choice == "sword"):
+                    elif (choice2 == "2") or (choice2 == "sword"):
                         Trading.purchase('dagger')
                         return 'guildhall'
                     else:
@@ -68,6 +68,8 @@ class Blacksmith(Scene):
             elif choice == "no":
                 print("Come back wit'more coin ye cheap bastard!")
                 return 'guildhall'
+            else:
+                print("That's not a choice.")
         
 
 
