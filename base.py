@@ -259,7 +259,7 @@ class Battle:
             'defense' : 10,
             'level': 1,
             'experience': 0,
-            'equipment': 'item',
+            'equipment': None,
             'currency': 0
         },
         'minotaur' : {
@@ -285,7 +285,13 @@ class Battle:
             Battle.characters['hero']['hp'] -= 1
 
     def player_damage(enemy_data):
-        player_atk = Battle.characters['hero']['attack']
+        if Battle.characters['hero']['equipment'] == 'dagger':
+            player_atk = Battle.characters['hero']['attack'] += 8
+        elif Battle.characters['hero']['equipment'] == 'sword':
+            player_atk = Battle.characters['hero']['attack'] += 25
+        else:
+            player_atk = Battle.characters['hero']['attack']
+
         enemy_def = Battle.characters[enemy_data]['defense']
 
         if player_atk > enemy_def:
