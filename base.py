@@ -286,9 +286,11 @@ class Battle:
 
     def player_damage(enemy_data):
         if Battle.characters['hero']['equipment'] == 'dagger':
-            player_atk = Battle.characters['hero']['attack'] += 8
+            Battle.characters['hero']['attack'] += 8
+            player_atk = Battle.characters['hero']['attack']
         elif Battle.characters['hero']['equipment'] == 'sword':
-            player_atk = Battle.characters['hero']['attack'] += 25
+            Battle.characters['hero']['attack'] += 25
+            player_atk = Battle.characters['hero']['attack']
         else:
             player_atk = Battle.characters['hero']['attack']
 
