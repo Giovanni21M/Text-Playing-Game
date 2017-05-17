@@ -42,7 +42,33 @@ class Beginning(Scene):
 class Blacksmith(Scene):
 
     def enter(self):
-        pass
+        print("You better have coin coming into my shop, %s." % username)
+
+        while True:
+            choice = input("Will you be crafting anything today? ")
+            choice = choice.lower()
+
+            if choice == "yes":
+                print("What weapon will you be having crafted today?")
+                print("1. Minotaur's Horn Dagger")
+                print("2. Dragon Fang Sword"
+
+                while True:
+                    choice = input("Weapon: ")
+                    choice = choice.lower()
+
+                    if (choice == "1") or (choice == "dagger"):
+                        Trading.purhcase('dagger')
+                        return 'guildhall'
+                    elif (choice == "2") or (choice == "sword"):
+                        Trading.purchase('dagger')
+                        return 'guildhall'
+                    else:
+                        print("We don't have that relic."
+            elif choice == "no":
+                print("Come back wit'more coin ye cheap bastard!")
+                return 'guildhall'
+        
 
 
 class Death(Scene):
