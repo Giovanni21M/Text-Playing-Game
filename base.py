@@ -376,7 +376,7 @@ class Trading:
         elif enemy == 'dragon':
             Battle.characters['hero']['currency'] += randint(9,16)
  
-        print("Your currency is currently at, " Battle.characters['hero']['currency']
+        print("Your currency is currently at, ", Battle.characters['hero']['currency'])
 
     def purchase(relic):
         if (
