@@ -51,7 +51,7 @@ class Blacksmith(Scene):
             if choice == "yes":
                 print("What weapon will you be having crafted today?")
                 print("1. Minotaur's Horn Dagger")
-                print("2. Dragon Fang Sword"
+                print("2. Dragon Fang Sword")
 
                 while True:
                     choice = input("Weapon: ")
