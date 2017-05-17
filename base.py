@@ -207,6 +207,7 @@ class Minotaur(Scene):
                 return 'death'
             elif Battle.characters['minotaur']['hp'] <= 0:
                 Battle.characters['hero']['hp'] = 10
+                Battle.characters['minotaur']['hp'] = 13
                 print("\n****************************")
                 print("You have slain the Minotaur!")
                 Leveling.exp_boost("minotaur")
@@ -400,7 +401,7 @@ class Trading:
             print("\nYou have purchased the %s! %s!" % sword)
             print("You have spent 35 coins on this relic.")
 
-        print("\nYou have %g coins leftover." % Battle.characters['hero']['currency'])
+        print("You have %g coins leftover." % Battle.characters['hero']['currency'])
 
     def currency_earn(enemy):
         if enemy == 'minotaur':
@@ -408,7 +409,7 @@ class Trading:
         elif enemy == 'dragon':
             Battle.characters['hero']['currency'] += randint(9,16)
  
-        print("Your currency is currently at, ", Battle.characters['hero']['currency'])
+        print("You currency is ", Battle.characters['hero']['currency'])
 
     def purchase(relic):
         if (
