@@ -64,7 +64,7 @@ class Blacksmith(Scene):
                         Trading.purchase('dagger')
                         return 'guildhall'
                     else:
-                        print("We don't have that relic."
+                        print("We don't have that relic.")
             elif choice == "no":
                 print("Come back wit'more coin ye cheap bastard!")
                 return 'guildhall'
