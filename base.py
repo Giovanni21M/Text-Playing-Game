@@ -42,25 +42,25 @@ class Beginning(Scene):
 class Blacksmith(Scene):
 
     def enter(self):
-        print("You better have coin coming into my shop, %s." % username)
+        print("\nYou better have coin coming into my shop, %s." % username)
 
         while True:
-            choice = input("Will you be crafting anything today? ")
+            choice = input("\nWill you be crafting anything today? ")
             choice = choice.lower()
 
             if choice == "yes":
-                print("What weapon will you be having crafted today?")
-                print("1. Minotaur's Horn Dagger")
-                print("2. Dragon Fang Sword")
+                print("\nWhat weapon will you be having crafted today?")
+                print("Minotaur's Horn Dagger - 15 coins")
+                print("Dragon Fang Sword - 35 coins")
 
                 while True:
                     choice2 = input("Weapon: ")
                     choice2 = choice2.lower()
 
-                    if (choice2 == "1") or (choice2 == "dagger"):
+                    if choice2 == "dagger":
                         Trading.purchase('dagger')
                         return 'guildhall'
-                    elif (choice2 == "2") or (choice2 == "sword"):
+                    elif choice2 == "sword":
                         Trading.purchase('dagger')
                         return 'guildhall'
                     else:
@@ -206,10 +206,12 @@ class Minotaur(Scene):
                 print("\nYou have been slain by the mighty Minotaur!.")
                 return 'death'
             elif Battle.characters['minotaur']['hp'] <= 0:
-                print("\nYou have slain the Minotaur!")
                 Battle.characters['hero']['hp'] = 10
+                print("\n****************************")
+                print("You have slain the Minotaur!")
                 Leveling.exp_boost("minotaur")
                 Trading.currency_earn('minotaur')
+                print("****************************")
                 return 'guildhall'
 
 
@@ -366,10 +368,10 @@ class Leveling:
     def exp_boost(char_exp):
         if char_exp == "minotaur":
             Battle.characters['hero']['experience'] += 5
-            print("\nYou gain 5 experience points.")
+            print("You gain 5 experience points.")
         elif char_exp == "dragon":
             Battle.characters['hero']['experience'] += 15
-            print("\nYou gain 15 experience points.")
+            print("You gain 15 experience points.")
 
         if Battle.characters['hero']['experience'] >= 20:
             Leveling.extra_exp(20)
@@ -387,17 +389,18 @@ class Leveling:
 
 class Trading:
 
-    dagger = "Minotaur's Horn Dagger"
-    sword = "Dragon Fang Sword"
-
     def leftover(relic):
-        print("You have purchased the %s!" % (dagger,))
+        dagger = "Minotaur's Horn Dagger"
+        sword = "Dragon Fang Sword"
+
         if relic == 'dagger':
+            print("\nYou have purchased the %s!" % dagger)
             print("You have spent 15 coins on this relic.")
         elif relic == 'sword':
+            print("\nYou have purchased the %s! %s!" % sword)
             print("You have spent 35 coins on this relic.")
 
-        print("You have %g coins leftover." % (Battle.characters['hero']['currency'],))
+        print("\nYou have %g coins leftover." % Battle.characters['hero']['currency'])
 
     def currency_earn(enemy):
         if enemy == 'minotaur':
@@ -423,7 +426,7 @@ class Trading:
             Battle.characters['hero']['equipment'] = 'sword'
             Trading.leftover('sword')
         else:
-            print("You don't have enough coins for this relic.")
+            print("\nYou don't have enough coins for this relic.")
 
 
 
