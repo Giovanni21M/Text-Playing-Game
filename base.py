@@ -125,7 +125,7 @@ class GuildHall(Scene):
                     else:
                         print("\nThere are beasts to be slain, hurry and choose!\n")
             elif choice == "blacksmith":
-                pass
+                return 'blacksmith'
             else:
                 print("\nThat's not an option.\n")
 
