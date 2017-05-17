@@ -209,6 +209,7 @@ class Minotaur(Scene):
                 print("\nYou have slain the Minotaur!")
                 Battle.characters['hero']['hp'] = 10
                 Leveling.exp_boost("minotaur")
+                Trading.currency_earn('minotaur')
                 return 'guildhall'
 
 
