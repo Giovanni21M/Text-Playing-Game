@@ -58,7 +58,7 @@ class Blacksmith(Scene):
                     choice2 = choice2.lower()
 
                     if (choice2 == "1") or (choice2 == "dagger"):
-                        Trading.purhcase('dagger')
+                        Trading.purchase('dagger')
                         return 'guildhall'
                     elif (choice2 == "2") or (choice2 == "sword"):
                         Trading.purchase('dagger')
