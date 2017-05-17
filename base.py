@@ -364,9 +364,9 @@ class Trading:
     def leftover(relic):
         print("You have purchased the %s!" % (dagger,))
         if relic == 'dagger':
-            print("You have spent 15 coins on this relic."
+            print("You have spent 15 coins on this relic.")
         elif relic == 'sword':
-            print("You have spent 35 coins on this relic."
+            print("You have spent 35 coins on this relic.")
 
         print("You have %g coins leftover." % (Battle.characters['hero']['currency'],))
 
