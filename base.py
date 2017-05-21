@@ -188,18 +188,20 @@ class Minotaur(Scene):
             (Battle.characters['minotaur']['hp'] != 0)
         ):
 
+            dmg = Battle('minotaur')
+
             choice = input("\nDo you attack? ")
             choice = choice.lower()
 
             if (choice == "yes") or (choice == "attack"):
-                Battle.player_damage('minotaur')
+                dmg.player_damage()
                 print("Enemy HP: ", Battle.characters['minotaur']['hp'])
             elif choice == "no":
-                Battle.enemy_damage('minotaur')
+                dmg.enemy_damage()
                 print("Your HP: ", Battle.characters['hero']['hp'])
             else:
                 print("\nYou left yourself open!\n")
-                Battle.enemy_damage('minotaur')
+                dmg.enemy_damage()
                 print("Your HP: ", Battle.characters['hero']['hp'])
 
             if Battle.characters['hero']['hp'] <= 0:
@@ -306,8 +308,11 @@ class Battle:
         }
     }
 
-    def enemy_damage(enemy_data):
-        enemy_atk = Battle.characters[enemy_data]['attack']
+    def __init__(self, enemy_data):
+        self.enemy_data = enemy_data
+
+    def enemy_damage(self):
+        enemy_atk = Battle.characters[self.enemy_data]['attack']
         player_def = Battle.characters['hero']['defense']
 
         if enemy_atk > player_def:
@@ -316,7 +321,7 @@ class Battle:
         else:
             Battle.characters['hero']['hp'] -= 1
 
-    def player_damage(enemy_data):
+    def player_damage(self):
         if Battle.characters['hero']['equipment'] == 'dagger':
             Battle.characters['hero']['attack'] += 8
             player_atk = Battle.characters['hero']['attack']
@@ -326,13 +331,13 @@ class Battle:
         else:
             player_atk = Battle.characters['hero']['attack']
 
-        enemy_def = Battle.characters[enemy_data]['defense']
+        enemy_def = Battle.characters[self.enemy_data]['defense']
 
         if player_atk > enemy_def:
             player_dps = player_atk - enemy_def
-            Battle.characters[enemy_data]['hp'] -= player_dps
+            Battle.characters[self.enemy_data]['hp'] -= player_dps
         else:
-            Battle.characters[enemy_data]['hp'] -= 1
+            Battle.characters[self.enemy_data]['hp'] -= 1
 
 
 class Leveling:
