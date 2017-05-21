@@ -189,6 +189,7 @@ class Minotaur(Scene):
         ):
 
             dmg = Battle('minotaur')
+            chxp = Leveling('minotaur')
 
             choice = input("\nDo you attack? ")
             choice = choice.lower()
@@ -212,7 +213,7 @@ class Minotaur(Scene):
                 Battle.characters['minotaur']['hp'] = 13
                 print("\n****************************")
                 print("You have slain the Minotaur!")
-                Leveling.exp_boost("minotaur")
+                chxp.exp_boost()
                 Trading.currency_earn('minotaur')
                 print("****************************")
                 return 'guildhall'
@@ -342,6 +343,9 @@ class Battle:
 
 class Leveling:
 
+    def __init__(self, char_exp):
+        self.char_exp = char_exp
+
     def stat_increase(x, y):
         Battle.characters['hero']['hp'] += Battle.characters['hero']['hp'] / 2
         Battle.characters['hero']['attack'] = randint(x,y)
@@ -372,10 +376,10 @@ class Leveling:
         extra = Battle.characters['hero']['experience'] - exp
 
     def exp_boost(char_exp):
-        if char_exp == "minotaur":
+        if self.char_exp == 'minotaur':
             Battle.characters['hero']['experience'] += 5
             print("You gain 5 experience points.")
-        elif char_exp == "dragon":
+        elif self.char_exp == 'dragon':
             Battle.characters['hero']['experience'] += 15
             print("You gain 15 experience points.")
 
