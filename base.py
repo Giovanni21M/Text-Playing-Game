@@ -376,7 +376,7 @@ class Leveling:
         global extra
         extra = Battle.characters['hero']['experience'] - exp
 
-    def exp_boost(char_exp):
+    def exp_boost(self):
         if self.char_exp == 'minotaur':
             Battle.characters['hero']['experience'] += 5
             print("You gain 5 experience points.")
@@ -384,26 +384,30 @@ class Leveling:
             Battle.characters['hero']['experience'] += 15
             print("You gain 15 experience points.")
 
-        if Battle.characters['hero']['experience'] >= 20:
+        if (
+            (Battle.characters['hero']['experience'] >= 20) and
+            (Battle.characters['hero']['level'] == 1)
+        ):
             Leveling.extra_exp(20)
             Leveling.level_up()
             Leveling.exp_reset(extra)
-        elif Battle.characters['hero']['experience'] >= 50:
+        elif (
+            (Battle.characters['hero']['experience'] >= 50) and
+            (Battle.characters['hero']['level'] == 2)
+        ):
             Leveling.extra_exp(50)
             Leveling.level_up()
             Leveling.exp_reset(extra)
-        elif Battle.characters['hero']['experience'] >= 80:
+        elif (
+            (Battle.characters['hero']['experience'] >= 80) and
+            (Battle.characters['hero']['level'] == 3)
+        ):
             Leveling.extra_exp(80)
             Leveling.level_up()
             Leveling.exp_reset(extra)
 
 
 class Trading:
-
-    global relicDagger
-    global relicSword
-    relicDagger = Trading('dagger', None)
-    relicSword = Trading('sword', None)
 
     def __init__(self, relic, enemy):
         self.relic = relic
@@ -431,6 +435,8 @@ class Trading:
         print("You currency is ", Battle.characters['hero']['currency'])
 
     def purchase(self):
+        relicDagger = Trading('dagger', None)
+        relicSword = Trading('sword', None)
         if (
             (Battle.characters['hero']['currency'] >= 15) and
             (self.relic == 'dagger')
