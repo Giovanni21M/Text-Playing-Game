@@ -45,6 +45,9 @@ class Blacksmith(Scene):
         print("\nYou better have coin coming into my shop, %s." % username)
 
         while True:
+            daggerPurchase = Trading('dagger', None)
+            swordPurchase = Trading('sword', None)
+
             choice = input("\nWill you be crafting anything today? ")
             choice = choice.lower()
 
@@ -58,10 +61,10 @@ class Blacksmith(Scene):
                     choice2 = choice2.lower()
 
                     if choice2 == "dagger":
-                        Trading.purchase('dagger')
+                        daggerPurchase.purchase()
                         return 'guildhall'
                     elif choice2 == "sword":
-                        Trading.purchase('dagger')
+                        swordPurchase.purchase()
                         return 'guildhall'
                     else:
                         print("We don't have that relic.")
