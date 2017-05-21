@@ -189,7 +189,8 @@ class Minotaur(Scene):
         ):
 
             dmg = Battle('minotaur')
-            chxp = Leveling('minotaur')
+            gainxp = Leveling('minotaur')
+            coin = Trading(None, 'minotaur')
 
             choice = input("\nDo you attack? ")
             choice = choice.lower()
@@ -213,8 +214,8 @@ class Minotaur(Scene):
                 Battle.characters['minotaur']['hp'] = 13
                 print("\n****************************")
                 print("You have slain the Minotaur!")
-                chxp.exp_boost()
-                Trading.currency_earn('minotaur')
+                gainxp.exp_boost()
+                coin.currency_earn()
                 print("****************************")
                 return 'guildhall'
 
@@ -399,42 +400,51 @@ class Leveling:
 
 class Trading:
 
-    def leftover(relic):
+    global relicDagger
+    global relicSword
+    relicDagger = Trading('dagger', None)
+    relicSword = Trading('sword', None)
+
+    def __init__(self, relic, enemy):
+        self.relic = relic
+        self.enemy = enemy
+
+    def leftover(self):
         dagger = "Minotaur's Horn Dagger"
         sword = "Dragon Fang Sword"
 
-        if relic == 'dagger':
+        if self.relic == 'dagger':
             print("\nYou have purchased the %s!" % dagger)
             print("You have spent 15 coins on this relic.")
-        elif relic == 'sword':
+        elif self.relic == 'sword':
             print("\nYou have purchased the %s! %s!" % sword)
             print("You have spent 35 coins on this relic.")
 
         print("You have %g coins leftover." % Battle.characters['hero']['currency'])
 
-    def currency_earn(enemy):
-        if enemy == 'minotaur':
+    def currency_earn(self):
+        if self.enemy == 'minotaur':
             Battle.characters['hero']['currency'] += randint(2,6)
-        elif enemy == 'dragon':
+        elif self.enemy == 'dragon':
             Battle.characters['hero']['currency'] += randint(9,16)
  
         print("You currency is ", Battle.characters['hero']['currency'])
 
-    def purchase(relic):
+    def purchase(self):
         if (
             (Battle.characters['hero']['currency'] >= 15) and
-            (relic == 'dagger')
+            (self.relic == 'dagger')
         ):
             Battle.characters['hero']['currency'] -= 15
             Battle.characters['hero']['equipment'] = 'dagger'
-            Trading.leftover('dagger')
+            relicDagger.leftover()
         elif (
             (Battle.characters['hero']['currency'] >= 35) and
-            (relic == 'sword')
+            (self.relic == 'sword')
         ):
             Battle.characters['hero']['currency'] -= 35
             Battle.characters['hero']['equipment'] = 'sword'
-            Trading.leftover('sword')
+            relicSword.leftover()
         else:
             print("\nYou don't have enough coins for this relic.")
 
