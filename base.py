@@ -3,14 +3,6 @@ from random import randint
 from time import sleep
 
 
-
-class Scene:
-
-    def enter(self):
-        print("This scene is not yet configured. Subclass it and implement enter().")
-        exit(1)
-
-
 class Engine:
 
     def __init__(self, scene_map):
@@ -18,7 +10,7 @@ class Engine:
 
     def play(self):
         current_scene = self.scene_map.opening_scene()
-        last_scene = self.scene_map.next_scene('finished')
+        last_scene = self.scene_map.next_scene('death')
 
         while current_scene != last_scene:
             next_scene_name = current_scene.enter()
@@ -27,7 +19,7 @@ class Engine:
         current_scene.enter()
 
 
-class Beginning(Scene):
+class Beginning:
 
     def enter(self):
         global username
@@ -39,7 +31,7 @@ class Beginning(Scene):
         return 'guildhall'
 
 
-class Blacksmith(Scene):
+class Blacksmith:
 
     def enter(self):
         print("\nYou better have coin coming into my shop, %s." % username)
@@ -76,7 +68,7 @@ class Blacksmith(Scene):
         
 
 
-class Death(Scene):
+class Death:
 
     quips = [
         "\nGood game.",
@@ -90,14 +82,14 @@ class Death(Scene):
         exit(1)
 
 
-class Dragon(Scene):
+class Dragon:
 
     def enter(self):
         print("\nBefore you can tell what it is you die.")
         return 'death'
 
 
-class Finished(Scene):
+class Finished:
 
     def enter(self):
         print("\nFinished so soon?")
@@ -105,7 +97,7 @@ class Finished(Scene):
         return 'finished'
 
 
-class GuildHall(Scene):
+class GuildHall:
 
     def enter(self):
         print("\nWelcome to the Guild Hall, %s." % username)
@@ -135,7 +127,7 @@ class GuildHall(Scene):
                 print("\nThat's not an option.\n")
 
 
-class Maze(Scene):
+class Maze:
 
     def enter(self):
         print("\nYou enter Pandora's Labyrinth")
@@ -180,7 +172,7 @@ class Maze(Scene):
                 print("\nAre you so scared of the unknown?\n")
 
 
-class Minotaur(Scene):
+class Minotaur:
 
     def enter(self):
         print("\nYou've encountered the mighty Minotaur,")
@@ -223,7 +215,7 @@ class Minotaur(Scene):
                 return 'guildhall'
 
 
-class Mountain(Scene):
+class Mountain:
 
     def enter(self):
         print("\nThere are two paths to choose from, do so.")
