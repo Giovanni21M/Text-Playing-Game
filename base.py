@@ -1,6 +1,7 @@
 from sys import exit
 from random import randint
 from time import sleep
+from gui import MainWindow
 
 
 class Engine:
@@ -454,3 +455,8 @@ class Trading:
 a_map = Map('beginning')
 a_game = Engine(a_map)
 a_game.play()
+
+win = MainWindow()
+win.connect("delete-event", Gtk.main_quit)
+win.show_all()
+Gtk.main()
